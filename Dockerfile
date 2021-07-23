@@ -1,5 +1,5 @@
 #ARG IMAGE=store/intersystems/iris-community:2021.1.0.215.0
-ARG IMAGE=herokutest_iris:latest
+ARG IMAGE=test-iijima/herokutest_iris:latest
 FROM $IMAGE
 
 USER root
