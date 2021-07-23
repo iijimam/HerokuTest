@@ -1,4 +1,3 @@
-///
 Class Test.Person Extends %Persistent
 {
 
