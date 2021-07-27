@@ -1,10 +1,17 @@
-Class Test.Person Extends %Persistent
+Class Test.Person Extends (%Persistent,%JSON.Adaptor)
 {
 
 Property Name As %String;
 
 Property Email As %String;
 
+ClassMethod CreateOneData()
+{
+    set p=..%New()
+    set p.Name="テスト太郎"
+    set p.Email="test@mail.com"
+    set st=p.%Save()
+}
 Storage Default
 {
 <Data name="PersonDefaultData">

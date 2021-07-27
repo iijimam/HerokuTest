@@ -1,0 +1,44 @@
+<html>
+    
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ようこそ！</title></head>
+<body>
+<h1>IRISにRESTでアクセス</h1>
+<p>
+<input type="text" id="path" value="/person/all">
+<input type="button" value="実行" onclick="onButtonClick();">
+<div id="jsondata"></div>
+<script>
+    function onButtonClick() {
+        //RESTでIRISにアクセス
+        // IRISのユーザ名とパスワードの準備
+        const json =""
+        var username = "_SYSTEM"
+        var password = "SYS"
+        var a64 = btoa(`${username}:${password}`)
+        // IRISコンテナ利用時はホスト上のURLを指定（docker-compose でホスト上ポートを変えた場合は変更要）
+        var hostname="localhost";
+        var url="http://" + hostname +":52773/test"+document.getElementById("path").value;
+        // GET要求実行
+        fetch(url, {
+            method: "GET",
+            headers:{
+            "Accept":"application/json",
+            "Authorization" : `Basic ${a64}`
+            },
+        }).then(function(Response) {
+            console.log("status=" + Response.status);
+            return Response.json();
+        }).then(function(json) {
+        console.log("取得結果=" +JSON.stringify(json));
+        document.getElementById("jsondata").innerText=JSON.stringify(json);
+
+        }).catch(function(err) {
+            console.log("err="+err);
+        });
+    }
+</script>
+
+</body>
+</html>

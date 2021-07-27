@@ -1,8 +1,8 @@
 {
     "objectscript.conn": {
         "active": true,
-        "server":"tryiris",
-        "ns":"USER"
+        "server": "tryiris",
+        "ns": "USER"
     },
     "intersystems.servers": {
         "tryiris":{

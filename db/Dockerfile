@@ -10,11 +10,10 @@ USER ${ISC_PACKAGE_MGRUSER}
 
 # ファイルのコピー
 COPY src src
+COPY Installer.cls .
 COPY iris.script iris.script
 
 # iris.scriptに記載された内容を実行
 RUN iris start IRIS \
 	&& iris session IRIS < iris.script \
     && iris stop IRIS quietly
-
-EXPOSE 52773

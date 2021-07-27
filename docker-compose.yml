@@ -1,9 +1,9 @@
-﻿version: '3.2'
+﻿version: '3.7'
 
 services:
-  iris:
+  db:
     build:
-      context: .
+      context: ./db
       dockerfile: Dockerfile
     container_name: tryiris
 
@@ -19,3 +19,15 @@ services:
                                 
     environment:
      - TZ=JST-9
+
+  app:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    depends_on:
+     - db
+    ports:
+      - 5000:5000
+    environment:
+      PYTHONPATH: '/opt/webapp/'
+      PORT: '5000'
