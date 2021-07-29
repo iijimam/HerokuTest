@@ -18,7 +18,7 @@
         var password = "SYS"
         var a64 = btoa(`${username}:${password}`)
         // IRISコンテナ利用時はホスト上のURLを指定（docker-compose でホスト上ポートを変えた場合は変更要）
-        var hostname="localhost";
+        var hostname=location.host;
         var url="http://" + hostname +":52773/test"+document.getElementById("path").value;
         // GET要求実行
         fetch(url, {

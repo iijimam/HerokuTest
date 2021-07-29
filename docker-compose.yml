@@ -4,7 +4,7 @@ services:
   db:
     build:
       context: ./db
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.worker
     container_name: tryiris
 
     ports:
@@ -23,7 +23,7 @@ services:
   app:
     build:
       context: ./python
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.web
     depends_on:
      - db
     ports:
